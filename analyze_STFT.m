@@ -1,16 +1,9 @@
-function [outputArg1,outputArg2] = analyze_STFT(inputArg1,inputArg2)
+function [] = analyze_STFT(x, Fs)
 %ANALYZE_STFT Summary of this function goes here
 %   Detailed explanation goes here
-arguments (Input)
-    inputArg1
-    inputArg2
-end
+% INPUT
+%   x   :   input signal
+%   Fs  :   sampling frequency
 
-arguments (Output)
-    outputArg1
-    outputArg2
-end
-
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+spectrogram(x, 128, 120, 128, Fs, 'yaxis');
 end
