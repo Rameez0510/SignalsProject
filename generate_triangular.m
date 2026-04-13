@@ -1,16 +1,19 @@
-function [outputArg1,outputArg2] = generate_triangular(inputArg1,inputArg2)
-%GENERATE_TRIANGULAR Summary of this function goes here
-%   Detailed explanation goes here
-arguments (Input)
-    inputArg1
-    inputArg2
-end
+function [t, x] = generate_triangular(f, A)
+%GENERATE_TRIANGULAR Generate a triangular wave signal
+% Inputs:
+%   f - frequency (Hz)
+%   A - amplitude
+%
+% Outputs:
+%   t - time vector
+%   x - triangular wave signal
 
-arguments (Output)
-    outputArg1
-    outputArg2
-end
+fs = 8000;  %sampling freq
+duration = 1;
 
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+t = 0:1/fs:duration-1/fs;
+
+% triangular fn
+x = A * sawtooth(2*pi*f*t, 0.5);
+
 end
