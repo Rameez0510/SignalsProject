@@ -1,16 +1,12 @@
-function [outputArg1,outputArg2] = analyze_(inputArg1,inputArg2)
-%ANALYZE_ Summary of this function goes here
-%   Detailed explanation goes here
-arguments (Input)
-    inputArg1
-    inputArg2
-end
+function [y, to] = analyze_time_domain(x,ti)
+%ANALYZE_TIME_DOMAIN Summary of this function goes here
+% INPUTS:
+%   x   :   recorded input signal
+%   to  :   duration of the signal
+% OUTPUT:
+%   y   :   output signal
+%   to  :   duration of output signal
 
-arguments (Output)
-    outputArg1
-    outputArg2
-end
-
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+y = x;
+to = ti;
 end
