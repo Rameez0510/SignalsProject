@@ -1,16 +1,19 @@
-function [outputArg1,outputArg2] = generate_chirp(inputArg1,inputArg2)
-%GENERATE_CHIRP Summary of this function goes here
-%   Detailed explanation goes here
-arguments (Input)
-    inputArg1
-    inputArg2
-end
+function [t, x] = generate_chirp(f, A)
+%GENERATE_CHIRP Generate a chirp signal
+% Inputs:
+%   f - final frequency (Hz)
+%   A - amplitude
+%
+% Outputs:
+%   t - time vector
+%   x - chirp signal
 
-arguments (Output)
-    outputArg1
-    outputArg2
-end
+fs = 8000;
+duration = 1;
 
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+t = 0:1/fs:duration-1/fs;
+
+% Chirp Function
+x = A * chirp(t, 0, duration, f);
+
 end
