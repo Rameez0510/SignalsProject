@@ -1,16 +1,19 @@
-function [outputArg1,outputArg2] = generate_sinc(inputArg1,inputArg2)
-%GENERATE_SINC Summary of this function goes here
-%   Detailed explanation goes here
-arguments (Input)
-    inputArg1
-    inputArg2
-end
+function [t, x] = generate_sinc(f, A)
+%GENERATE_SINC Generate a sinc signal
+% Inputs:
+%   f - controls width of sinc (Hz-like scaling)
+%   A - amplitude
+%
+% Outputs:
+%   t - time vector
+%   x - sinc signal
 
-arguments (Output)
-    outputArg1
-    outputArg2
-end
+fs = 8000;
+duration = 1;
 
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+t = -duration/2 : 1/fs : duration/2 - 1/fs;
+
+% sinc function
+x = A * sinc(2*f*t);
+
 end
