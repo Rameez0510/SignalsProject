@@ -1,16 +1,26 @@
-function [outputArg1,outputArg2] = untitled(inputArg1,inputArg2)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
-arguments (Input)
-    inputArg1
-    inputArg2
-end
+function x = waveform_generator(type, A, f, t)
 
-arguments (Output)
-    outputArg1
-    outputArg2
-end
+    switch lower(type)
 
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+        case 'sine'
+            x = A * sin(2*pi*f*t);
+
+        case 'square'
+            x = A * square(2*pi*f*t);
+
+        case 'triangle'
+            x = A * sawtooth(2*pi*f*t, 0.5); % 0.5 → triangle
+
+        case 'chirp'
+            % Chirp from f to 2f over time
+            x = A * chirp(t, f, t(end), 2*f);
+
+        case 'sinc'
+            % Avoid division by zero
+            x = A * sinc(2*f*(t - t(end)/2));
+
+        otherwise
+            error('Invalid signal type');
+    end
+
 end
