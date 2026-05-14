@@ -98,4 +98,4 @@ The program displays:
 
 # Authors
 
-Prince Kumar , Rameez Khan , MD Ashmil Hoda
+Prince Kumar , Rameez Khan , Md Aasmil Hoda
