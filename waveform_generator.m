@@ -1,26 +1,30 @@
 function x = waveform_generator(type, A, f, t)
 
-    switch lower(type)
+switch lower(type)
 
-        case 'sine'
-            x = A * sin(2*pi*f*t);
+    % Sine Wave
+    case 'sine'
+        x = A * sin(2*pi*f*t);
 
-        case 'square'
-            x = A * square(2*pi*f*t);
+        % Square Wave
+    case 'square'
+        x = A * square(2*pi*f*t);
 
-        case 'triangle'
-            x = A * sawtooth(2*pi*f*t, 0.5); % 0.5 → triangle
+        % Triangle Wave
+    case 'triangle'
+        x = A * sawtooth(2*pi*f*t, 0.5);
 
-        case 'chirp'
-            % Chirp from f to 2f over time
-            x = A * chirp(t, f, t(end), 2*f);
+        % Chirp Signal
+    case 'chirp'
+        x = A * chirp(t, f, t(end), 2*f);
 
-        case 'sinc'
-            % Avoid division by zero
-            x = A * sinc(2*f*(t - t(end)/2));
+        % Sinc Signal
+    case 'sinc'
+        x = A * sinc(2*f*(t - t(end)/2));
 
-        otherwise
-            error('Invalid signal type');
-    end
+    otherwise
+        error('Invalid signal type');
+
+end
 
 end
