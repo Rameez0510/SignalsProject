@@ -96,6 +96,6 @@ The program displays:
 - Spectral Analysis
 - Signal Generation
 
-# Author
+# Authors
 
 Prince Kumar , Rameez Khan , MD Ashmil Hoda
