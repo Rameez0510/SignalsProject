@@ -1,36 +1,51 @@
 function signal_analyzer(t, x, fs)
 
-    % Create figure
-    figure;
+figure;
 
-    % 1) Time Domain Plot
-    subplot(3,1,1);
-    plot(t, x);
-    title('Time Domain Signal');
-    xlabel('Time (s)');
-    ylabel('Amplitude');
-    grid on;
+% 1) Time Domain Plot
+subplot(3,1,1);
 
-    % 2) Frequency Domain (FFT)
-    N = length(x);              % number of samples
-    X = fft(x);                 % FFT
-    X_mag = abs(X)/N;           % normalize
+plot(t, x);
 
-    f = (0:N-1)*(fs/N);         % frequency axis
+title('Time Domain Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
 
-    % Plot only half spectrum
-    half = 1:floor(N/2);
+grid on;
 
-    subplot(3,1,2);
-    plot(f(half), X_mag(half));
-    title('Frequency Spectrum (FFT)');
-    xlabel('Frequency (Hz)');
-    ylabel('Magnitude');
-    grid on;
+%  Frequency Domain (FFT)
 
-    % 3) Spectrogram (STFT)
-    subplot(3,1,3);
-    spectrogram(x, 256, 128, 256, fs, 'yaxis');
-    title('Spectrogram');
+N = length(x);
+
+X = fft(x);
+
+P2 = abs(X/N);
+
+P1 = P2(1:N/2+1);
+
+P1(2:end-1) = 2*P1(2:end-1);
+
+f = fs*(0:(N/2))/N;
+
+subplot(3,1,2);
+
+plot(f, P1);
+
+title('Frequency Spectrum (FFT)');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
+
+xlim([0 fs/2]);
+
+grid on;
+
+
+% Spectrogram (STFT)
+
+subplot(3,1,3);
+
+spectrogram(x, 256, 128, 256, fs, 'yaxis');
+
+title('Spectrogram');
 
 end
